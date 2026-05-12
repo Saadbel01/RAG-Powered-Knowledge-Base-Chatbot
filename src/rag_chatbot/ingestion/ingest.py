@@ -6,7 +6,7 @@ from rag_chatbot.ingestion.embedder import embed_and_store
 from rag_chatbot.ingestion.loader import load_documents
 
 
-logger = structlog.configure(
+structlog.configure(
     processors=[
         structlog.stdlib.add_log_level,
         structlog.dev.ConsoleRenderer(True)
