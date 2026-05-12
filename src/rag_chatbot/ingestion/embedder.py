@@ -6,7 +6,11 @@ from langchain_pinecone import PineconeVectorStore
 from tenacity import retry, stop_after_attempt, wait_exponential
 from tqdm import tqdm
 from rag_chatbot.config import get_settings
+import os
 
+
+cfg = get_settings()
+os.environ["PINECONE_API_KEY"] = cfg.pinecone_api_key
 
 log = structlog.get_logger(__name__)
 
@@ -34,7 +38,8 @@ def embed_and_store(chunks: list[Document]) -> PineconeVectorStore:
     store = PineconeVectorStore.from_documents(
         documents=first_batch,
         embedding=embeded_model,
-        index_name=cfg.pinecone_index_name)
+        index_name=cfg.pinecone_index_name,
+        pinecone_api_key=cfg.pinecone_api_key)
     for i in tqdm(range(64, len(chunks), batch_size),
                   total=(len(chunks) - 64 + batch_size - 1) // batch_size,
                   desc="Embedding batches"):
@@ -50,4 +55,5 @@ def load_existing_store() -> PineconeVectorStore:
     return PineconeVectorStore(
         index_name=cfg.pinecone_index_name,
         embedding=get_embedding_model(),
+        pinecone_api_key=cfg.pinecone_api_key
     )
