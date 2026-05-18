@@ -6,6 +6,7 @@ import structlog
 
 log = structlog.get_logger(__name__)
 
+
 def create_chunks(documents: list[Document]) -> list[Document]:
     cfg = get_settings()
 
@@ -17,12 +18,12 @@ def create_chunks(documents: list[Document]) -> list[Document]:
         add_start_index=True
     )
     chunks = splitter.split_documents(documents)
-    
+
     if not chunks:
         log.erro("chunker.empty", reason="No chunks produced.")
         return []
 
-    for idx ,chunk in enumerate(chunks):
+    for idx, chunk in enumerate(chunks):
         chunk.metadata.update({
             "chunk_id": idx,
             "char_count": len(chunk.page_content)
@@ -37,5 +38,3 @@ def create_chunks(documents: list[Document]) -> list[Document]:
         max_character_length=max(chunks_char_count)
     )
     return chunks
-    
-    

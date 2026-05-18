@@ -14,19 +14,23 @@ os.environ["PINECONE_API_KEY"] = cfg.pinecone_api_key
 
 log = structlog.get_logger(__name__)
 
+
 def get_embedding_model() -> HuggingFaceEmbeddings:
     cfg = get_settings()
 
     return HuggingFaceEmbeddings(
         model_name=cfg.embed_model,
         model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True}   
+        encode_kwargs={"normalize_embeddings": True}
     )
 
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=1, max=8))
+
+@retry(stop=stop_after_attempt(3),
+       wait=wait_exponential(multiplier=1, min=1, max=8))
 def _upsert_batch(store: PineconeVectorStore,
                   batch: list[Document]) -> None:
     store.add_documents(batch)
+
 
 def embed_and_store(chunks: list[Document]) -> PineconeVectorStore:
     cfg = get_settings()

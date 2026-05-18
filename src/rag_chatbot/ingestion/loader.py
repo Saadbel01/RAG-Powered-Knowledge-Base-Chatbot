@@ -6,8 +6,9 @@ import structlog
 
 log = structlog.get_logger(__name__)
 
-def load_documents(data_folder: str="data") -> list[Document]:
-    
+
+def load_documents(data_folder: str = "data") -> list[Document]:
+
     documents: list[Document] = []
 
     try:
@@ -26,7 +27,7 @@ def load_documents(data_folder: str="data") -> list[Document]:
         except Exception as e:
             log.error("loader.error", file=item.name, error=str(e))
 
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         print(f"The folder '{data_folder}' does not exist.")
         exit(1)
     except Exception as e:
@@ -35,6 +36,5 @@ def load_documents(data_folder: str="data") -> list[Document]:
     log.info("loader.done", total=len(documents))
     return documents
 
-    
-    
+
 load_documents()

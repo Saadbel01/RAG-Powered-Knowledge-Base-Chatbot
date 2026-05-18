@@ -1,4 +1,3 @@
-import sys
 import structlog
 from rag_chatbot.config import get_settings
 from rag_chatbot.ingestion.chunker import create_chunks
@@ -13,12 +12,13 @@ structlog.configure(
     ]
 )
 
-log = structlog.get_logger(__name__) 
+log = structlog.get_logger(__name__)
+
 
 def run_ingestion() -> None:
     cfg = get_settings()
     log.info("=== RAG CHATTBOT - INGESTION PIPELINE ===")
-    
+
     log.info("Start loading the documents ...")
     documents = load_documents(cfg.data_folder)
     if not documents:
@@ -28,11 +28,11 @@ def run_ingestion() -> None:
     log.info("Start chunking the documents ...")
     chunks = create_chunks(documents)
     if not chunks:
-        raise ValueError("Error: Enable to create chunks.")    
+        raise ValueError("Error: Enable to create chunks.")
     log.info("Chunking done successfully")
 
     log.info("Start embedding and storing the chunks ...")
-    embed_and_store(chunks)    
+    embed_and_store(chunks)
     log.info("Embedding and Storing the chunks done successfully")
 
 
