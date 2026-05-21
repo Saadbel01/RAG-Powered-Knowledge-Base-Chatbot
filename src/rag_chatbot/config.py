@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     groq_api_key: str
     groq_model: str = "llama-3.1-70b-versatile"
 
-    embed_model: str = "BAAI/bge-m3"
+    embed_model: str = "BAAI/bge-base-en-v1.5"
     embed_dim: int = 768
 
     pinecone_api_key: str

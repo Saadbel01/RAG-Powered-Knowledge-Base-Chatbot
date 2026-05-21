@@ -1,3 +1,10 @@
+from rag_chatbot.config import get_settings
+from langchain_pinecone import PineconeVectorStore
+from rank_bm25 import BM25Okapi
+from rag_chatbot.ingestion.chunker import create_chunks
+from rag_chatbot.ingestion.loader import load_documents
+import numpy as np
+
 def reciprocal_rank_fusion(dense: list, sparse: list, k=60) -> list:
     rrf_dict = {}
     dense_rrf = {}
@@ -23,3 +30,46 @@ def reciprocal_rank_fusion(dense: list, sparse: list, k=60) -> list:
             rrf_dict[d] += sparse_rrf[d]
     return [doc_map[d[0]] for d in sorted(rrf_dict.items(),
                                           key=lambda x: x[1], reverse=True)]
+
+
+class HybridRetriever:
+
+    def __init__(self, all_chunks=None):
+        self._chunks = all_chunks
+        self._cfg = get_settings()
+        self._store = self._build_store()
+        self._bm25 = None
+        if self._chunks:
+            corpus = [c.page_content.lower().split() for c in self._chunks]
+            self._bm25 = BM25Okapi(corpus)
+
+    def _build_store(self) -> PineconeVectorStore:
+        return PineconeVectorStore(
+            index_name=self._cfg.pinecone_index_name,
+            embedding=self._cfg.embed_model,
+            pinecone_api_key=self._cfg.pinecone_api_key
+        )
+
+    def _semantic_searh(self, query: str, k: int) -> list:
+        return self._store.similarity_search(query, k)
+
+    def _bm25_search(self, query: str, k: int) -> list:
+        if not self._bm25:
+            return []
+        res = self._bm25.get_scores(query.lower().split())
+        top_indices = np.argsort(res)[::-1]
+        return [self._chunks[id] for id in top_indices[:k]]
+
+    def retrieve(self, query, k=None):
+        pass
+
+    def invoke(self, query):
+        self.retrieve(query)
+
+
+if __name__ == "__main__":
+    chunks = create_chunks(load_documents())
+    retriver = HybridRetriever(chunks)
+    res = retriver._bm25_search("what is agent", 3)
+    for i, chunk in enumerate(res):
+        print(f"{i}: {chunk}")

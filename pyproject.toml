@@ -17,7 +17,7 @@ dependencies = [
     # Embeddings + reranker (CPU, no API cost)
     "sentence-transformers==3.1.0",
     "transformers==4.44.0",
-    "torch==2.4.0",
+    "torch>=2.4,<3",
 
     # Vector store + sparse retrieval
     "pinecone-client==5.0.0",
