@@ -3,7 +3,15 @@ from langchain_pinecone import PineconeVectorStore
 from rank_bm25 import BM25Okapi
 from rag_chatbot.ingestion.chunker import create_chunks
 from rag_chatbot.ingestion.loader import load_documents
+from rag_chatbot.ingestion.embedder import get_embedding_model
 import numpy as np
+from sentence_transformers import CrossEncoder
+import structlog
+
+
+log = structlog.get_logger(__name__)
+_CROSS_ENCODER = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+
 
 def reciprocal_rank_fusion(dense: list, sparse: list, k=60) -> list:
     rrf_dict = {}
@@ -44,9 +52,10 @@ class HybridRetriever:
             self._bm25 = BM25Okapi(corpus)
 
     def _build_store(self) -> PineconeVectorStore:
+
         return PineconeVectorStore(
             index_name=self._cfg.pinecone_index_name,
-            embedding=self._cfg.embed_model,
+            embedding=get_embedding_model(),
             pinecone_api_key=self._cfg.pinecone_api_key
         )
 
@@ -61,10 +70,23 @@ class HybridRetriever:
         return [self._chunks[id] for id in top_indices[:k]]
 
     def retrieve(self, query, k=None):
-        pass
+        k = k or self._cfg.top_k
+        fetch_k = k * 2
+        dense = self._semantic_searh(query, fetch_k)
+        sparse = self._bm25_search(query, fetch_k)
+        fused = reciprocal_rank_fusion(dense, sparse)
+        pool = fused[:k*3]
+        if not pool:
+            return dense[:k]
+        pairs = [(query, chunk.page_content) for chunk in pool]
+        scores = _CROSS_ENCODER.predict(pairs)
+        ranked = sorted(zip(scores, pool), key=lambda x: x[0], reverse=True)
+        result = [doc for _, doc in ranked[:k]]
+        log.info("Retrieve Done", nb_chunks=k)
+        return result
 
     def invoke(self, query):
-        self.retrieve(query)
+        return self.retrieve(query)
 
 
 if __name__ == "__main__":
