@@ -2,7 +2,7 @@ import structlog
 import time
 from langchain.schema import Document
 from langchain.schema.output_parser import StrOutputParser
-from langchain.schema.runnable import RunnablePassthrough
+from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
 from langchain_groq import ChatGroq
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -54,7 +54,7 @@ def create_rag_chain(retriever):
     return (
         {
             "context":
-                retriever | format_docs,
+                RunnableLambda(retriever.invoke) | format_docs,
 
             "question":
                 RunnablePassthrough(),
@@ -82,3 +82,13 @@ def ask_with_retry(chain, question: str) -> dict:
         "latency_ms": latency_ms,
         "success": True
     }
+
+
+if __name__ == "__main__":
+
+    from rag_chatbot.retrieval.retriever import HybridRetriever
+    retriever = HybridRetriever()
+    chain = create_rag_chain(retriever)
+    result = ask_with_retry(chain, 'what is attention mechanism?')
+    print(result['answer'])
+    print(f'Latency: {result["latency_ms"]}ms')
