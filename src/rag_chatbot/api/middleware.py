@@ -26,3 +26,6 @@ class TokenBucketRateLimiter:
         if self._tokens[user_id] < 1:
             raise HTTPException(status_code=429, detail="Rate limit exceeded.")
         self._tokens[user_id] -= 1
+
+
+rate_limiter = TokenBucketRateLimiter(10, 1.0)
