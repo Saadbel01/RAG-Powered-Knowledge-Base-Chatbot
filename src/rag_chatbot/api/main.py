@@ -19,21 +19,53 @@ structlog.configure(
 
 log = structlog.get_logger(__name__)
 
-_metrics = defaultdict(int)
-
-app = FastAPI()
+_metrics: dict[str, int | float] = defaultdict(int)
 
 
-@app.get("/health")
-def get_health(request: Request) -> HealthResponse:
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Startup and shutdown logic.
+    Everything between the start of this function and the 'yield' statement
+    runs at startup, before any request is handled. Everything after 'yield'
+    runs at shutdown.
+    """
+    log.info("startup.begin")
+    cfg = get_settings()
+
+    retriever = HybridRetriever()
+    app.state.retriever = retriever
+
+    app.state.chain = create_rag_chain(retriever)
+
+    log.info(
+        "startup.done",
+        model=cfg.groq_model,
+        index=cfg.pinecone_index_name,
+    )
+    yield
+
+    log.info("shutdown.complete")
+
+app = FastAPI(
+    title="RAG Chatbot API",
+    version="0.1.0",
+    description="Answers questions about your documents using RAG.",
+    lifespan=lifespan
+
+)
+
+
+@app.get("/health", response_model=HealthResponse, tags=["ops"])
+def health(request: Request) -> HealthResponse:
     if hasattr(request.app.state, "chain"):
         return HealthResponse(status="ok", pinecone=True, groq=True)
     else:
         return HealthResponse(status="degraded", pinecone=False, groq=False)
 
 
-@app.post("/ask")
-def ask_request(ask_request: AskRequest, request: Request) -> AskResponse:
+@app.post("/ask", response_model=AskResponse, tags=["rag"])
+def ask(ask_request: AskRequest, request: Request) -> AskResponse:
     request_id = str(uuid.uuid4())
     rate_limiter.check(ask_request.user_id)
     try:
@@ -50,4 +82,32 @@ def ask_request(ask_request: AskRequest, request: Request) -> AskResponse:
         answer=response["answer"],
         latency_ms=response["latency_ms"],
         request_id=request_id
+    )
+
+
+@app.get("/metrics", response_model=MetricsResponse, tags=["ops"])
+async def metrics() -> MetricsResponse:
+    """Exposes simple request counters for monitoring dashboards."""
+    total = _metrics["total_requests"]
+    hits = _metrics["cache_hits"]
+    groq = _metrics["groq_calls"]
+    lat = _metrics["total_latency"]
+
+    return MetricsResponse(
+        total_requests=total,
+        cache_hits=hits,
+        cache_hit_rate=round(hits / total, 3) if total else 0.0,
+        avg_latency_ms=round(lat / groq, 1) if groq else 0.0,
+        groq_calls=groq
+    )
+
+
+def start() -> None:
+    import uvicorn
+
+    uvicorn.run(
+        "rag_chatbot.api.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=False
     )
