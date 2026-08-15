@@ -47,6 +47,7 @@ async def lifespan(app: FastAPI):
 
     log.info("shutdown.complete")
 
+
 app = FastAPI(
     title="RAG Chatbot API",
     version="0.1.0",
@@ -86,7 +87,7 @@ def ask(ask_request: AskRequest, request: Request) -> AskResponse:
 
 
 @app.get("/metrics", response_model=MetricsResponse, tags=["ops"])
-async def metrics() -> MetricsResponse:
+def metrics() -> MetricsResponse:
     """Exposes simple request counters for monitoring dashboards."""
     total = _metrics["total_requests"]
     hits = _metrics["cache_hits"]
@@ -111,3 +112,7 @@ def start() -> None:
         port=8000,
         reload=False
     )
+
+
+if __name__ == "__main__":
+    start()
