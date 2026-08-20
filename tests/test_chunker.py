@@ -5,7 +5,7 @@ from rag_chatbot.ingestion.chunker import create_chunks
 
 
 def make_doc(text: str) -> Document:
-
+    """Helper: create a minimal Document for testing."""
     return Document(
         page_content=text,
         metadata={
@@ -16,7 +16,10 @@ def make_doc(text: str) -> Document:
 
 
 def test_long_document_produces_multiple_chunks():
-
+    """
+    A document longer than chunk_size must be split into
+    multiple chunks.
+    """
     long_text = "This is a sentence. " * 100
     docs = [make_doc(long_text)]
 
@@ -28,7 +31,10 @@ def test_long_document_produces_multiple_chunks():
 
 
 def test_every_chunk_has_required_metadata():
-
+    """
+    chunk_id, char_count, and source must be present
+    on every chunk.
+    """
     docs = [
         make_doc("Some content for testing metadata propagation.")
     ]
@@ -42,7 +48,10 @@ def test_every_chunk_has_required_metadata():
 
 
 def test_chunk_size_is_not_wildly_exceeded():
-
+    """
+    No chunk should be significantly larger than
+    chunk_size + chunk_overlap.
+    """
     docs = [make_doc("word " * 500)]
 
     chunks = create_chunks(docs)
