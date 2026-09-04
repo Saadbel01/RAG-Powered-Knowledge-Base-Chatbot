@@ -1,4 +1,6 @@
+import os
 from functools import lru_cache
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -25,7 +27,7 @@ class Settings(BaseSettings):
     pinecone_api_key: str
     pinecone_index_name: str = "rag-chatbot"
 
-    langchain_tracing_v2: bool = False
+    langchain_tracing_v2: bool = True
     langchain_api_key: str = ""
     langchain_project: str = "rag-chatbot"
 
@@ -44,4 +46,13 @@ def get_settings() -> Settings:
     Every module calls get_settings() instead of reading env vars directly,
     keeping configuration in one place and making tests easy to override.
     """
-    return Settings()
+    settings = Settings()
+
+    if settings.langchain_tracing_v2:
+        os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    if settings.langchain_api_key:
+        os.environ["LANGCHAIN_API_KEY"] = settings.langchain_api_key
+    if settings.langchain_project:
+        os.environ["LANGCHAIN_PROJECT"] = settings.langchain_project
+
+    return settings

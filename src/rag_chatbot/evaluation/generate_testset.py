@@ -1,12 +1,13 @@
 import json
 import random
 from pathlib import Path
+
+import structlog
 from langchain_groq import ChatGroq
+
 from rag_chatbot.config import get_settings
 from rag_chatbot.ingestion.chunker import create_chunks
 from rag_chatbot.ingestion.loader import load_documents
-import structlog
-
 
 log = structlog.get_logger(__name__)
 
@@ -57,7 +58,8 @@ def generate_testset(n_samples: int = 50) -> list[dict]:
     output_path = Path("evaluation/testset.json")
     output_path.parent.mkdir(exist_ok=True)
     output_path.write_text(
-        json.dumps(results, indent=2, ensure_ascii=False)
+        json.dumps(results, indent=2, ensure_ascii=False),
+        encoding="utf-8",
     )
     log.info("generate.done", saved=str(output_path), samples=len(results))
     return results

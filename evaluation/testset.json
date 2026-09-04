@@ -1,0 +1,252 @@
+[
+  {
+    "question": "What are the three LLM-powered modules integrated in CAMI’s STAR framework?",
+    "ground_truth": "client State inference, motivation Topic exploration, and response gEneration",
+    "context": "tal results demonstrate that AutoCBT generates higher-quality\nCBT-oriented responses compared to fixed-structure systems,\nhighlighting its potential to deliver scalable, empathetic, and\ncontextually appropriate psychological support for users who\nmight otherwise avoid in-person therapy.\nYang et al. [161] present CAMI, an automated conversa-\ntional counselor agent grounded in Motivational Interviewing\n(MI), a client-centered approach designed to resolve ambiva-\nlence and promote behavior change. CAMI’s novel STAR\nframework integrates three LLM-powered modules client State\ninference, motivation Topic exploration, and response gEner-\nation to evoke “change talk” in line with MI principles. By\naccurately inferring a client’s emotional and motivational state,"
+  },
+  {
+    "question": "What is the name of the abstracted transformer architecture investigated by Yu et al.?",
+    "ground_truth": "MetaFormer",
+    "context": "3.11. MetaFormers\nYu et al. [ 84] investigated MetaFormer, an abstracted transformer architecture that\ngeneralizes beyond specific token mixer designs. Various baseline models under the"
+  },
+  {
+    "question": "What is the name of the AI agent that leverages real-time data feeds, quantitative tools, and an instruction-tuned LLM to generate high-quality stock analysis?",
+    "ground_truth": "FinSphere",
+    "context": "they propose Analyscore, a systematic evaluation framework\nthat objectively assesses the quality of stock analysis reports.\nThird, they develop FinSphere, an AI agent that leverages\nreal-time data feeds, quantitative tools, and an instruction-\ntuned LLM to generate high-quality stock analysis in response\nto user queries. Experimental results indicate that FinSphere\noutperforms general and domain-specific LLMs and existing\nagent-based systems, even when these systems are enhanced\nwith real-time data and few-shot guidance.\nFatouros et al. [196] introduce MarketSenseAI, an inno-\nvative framework for comprehensive stock analysis that har-\nnesses large language models (LLMs) to integrate diverse\nfinancial data sources ranging from financial news, historical"
+  },
+  {
+    "question": "What innovative approaches do the authors explore to produce robust Meta-CoTs?",
+    "ground_truth": "process supervision, synthetic data generation, and search algorithms",
+    "context": "generating the visible chain of thought but also understanding\nthe in-context search behavior and iterative reasoning steps\nthat contribute to it. To overcome these challenges, the authors\nexplore innovative approaches, including process supervision,\nsynthetic data generation, and search algorithms, to produce\nrobust Meta-CoTs. Moreover, they propose a concrete train-\ning pipeline that integrates instruction tuning with linearized\nsearch traces and reinforcement learning post-training. Open\nresearch questions remain regarding scaling laws, the role of\nverifiers, and the discovery of novel reasoning algorithms,\nunderscoring the complexity and potential of advancing more\nhuman-like reasoning in large language models.\nB. Why Do Multi-Agent LLM Systems Fail?"
+  },
+  {
+    "question": "According to the text, in which year was the paper titled \"Chain of ideas: Revolutionizing research via novel idea development with llm agents\" published?",
+    "ground_truth": "2024",
+    "context": "44\n[143] X. Liang, J. Yang, Y . Wang, C. Tang, Z. Zheng, S. Niu, S. Song,\nH. Wang, B. Tang, F. Xionget al., “Surveyx: Academic survey au-\ntomation via large language models,”arXiv preprint arXiv:2502.14776,\n2025.\n[144] L. Li, W. Xu, J. Guo, R. Zhao, X. Li, Y . Yuan, B. Zhang,\nY . Jiang, Y . Xin, R. Danget al., “Chain of ideas: Revolutionizing\nresearch via novel idea development with llm agents,”arXiv preprint\narXiv:2410.13185, 2024.\n[145] A. Mitra, L. Del Corro, G. Zheng, S. Mahajan, D. Rouhana, A. Co-\ndas, Y . Lu, W.-g. Chen, O. Vrousgos, C. Rossetet al., “Agentin-\nstruct: Toward generative teaching with agentic flows,”arXiv preprint\narXiv:2407.03502, 2024.\n[146] X. Tang, T. Hu, M. Ye, Y . Shao, X. Yin, S. Ouyang, W. Zhou,"
+  },
+  {
+    "question": "Which baseline ViT models are highlighted in Section 3?",
+    "ground_truth": "ViT-L and ViT-B",
+    "context": "oneering ViT model in detail, laying the groundwork for understanding its subsequent\nevolution. Section 3 is dedicated to the improved models of transformers. It begins with a\ndetailed discussion of the baseline models, ViT-L and ViT-B, highlighting their character-\nistics and significance. We then provide a comprehensive classification and overview of\nthe various improvement strategies, followed by in-depth examinations of each category\nof improved models. This includes models that enhance data efficiency, combine CNN\nconcepts, adopt lightweight designs, deepen the transformer structure, explore aggregating\nnested transformers and cross-attention mechanisms, introduce new loss functions, and\nother miscellaneous improvements. In Section 4, we conduct a detailed comparison of"
+  },
+  {
+    "question": "Which protocol focuses on integrating data and tools into LLM workflows?",
+    "ground_truth": "MCP (Model Context Protocol)",
+    "context": "Tab. XII provides a comparative analysis of three agent\ncommunication protocols: MCP, ACP, and A2A. It highlights\ntheir primary purpose, typical setup, core features, and ideal\nuse cases. MCP (Model Context Protocol) focuses on in-\ntegrating data and tools into LLM workflows, providing a\nstandardized interface for delivering context. ACP (Agent\nCommunication Protocol), a component of the BeeAI plat-\nform, enables communication among multiple agents in a\nlocal-first setup, providing tools for agent discovery and\ntelemetry. In contrast, A2A (Agent-to-Agent Protocol) enables\ninteroperability between agents across different frameworks,\nallowing them to exchange tasks and collaborate. The table\nhighlights the distinct roles these protocols play in agent-"
+  },
+  {
+    "question": "How many out-of-sync scenario instances are included in the SyncBench benchmark?",
+    "ground_truth": "over 24,000",
+    "context": "ing. Through their SyncBench benchmark, which includes\nover 24,000 instances of out-of-sync scenarios from real-\nworld codebases, they highlight performance gaps in current\nLLM agents and emphasize the need for better collabora-\ntion and resource-awareness in AI systems. Finally, Islam\net al. [188] present CodeSim, a multi-agent code generation\nframework that addresses program synthesis, coding, and\ndebugging through a human-like perception approach. By\nincorporating plan verification and internal debugging via\ninput/output simulation, CodeSim achieves state-of-the-art per-\nformance across multiple competitive benchmarks, including\nHumanEval, MBPP, APPS, and CodeContests. Their approach\ndemonstrates the potential for further enhancement when cou-"
+  },
+  {
+    "question": "What are the three loss functions described in the text that together improve transformer performance?",
+    "ground_truth": "cosine loss, contrastive loss, and mixing loss",
+    "context": "last layer. The cosine loss enhances the discriminative power of patch representations\nby maximizing their diversity. The contrastive loss ensures that corresponding patch\nrepresentations between early and deeper layers maintain similarity while preserving\ndiversity across layers. The mixing loss incorporates supervisory information for each\npatch, generating more informative and representative patch features.\nExperimental results [ 83] demonstrate that these three losses improve transformer per-\nformance, enhance training stability, and allow for a higher drop path rate. These findings\npave the way for further architectural refinements, as discussed in subsequent sections.\n3.11. MetaFormers\nYu et al. [ 84] investigated MetaFormer, an abstracted transformer architecture that"
+  },
+  {
+    "question": "Which early systems are cited as demonstrating how specialized reasoning systems can achieve optimal trade‑offs between computational cost and accuracy?",
+    "ground_truth": "DeepSeek‑R1‑Distill, Sky‑T1, and TinyZero",
+    "context": "specific optimizations, as early systems such as DeepSeek-\nR1-Distill, Sky-T1, and TinyZero begin to demonstrate how\nspecialized reasoning systems can achieve optimal trade-offs\nbetween computational cost and accuracy.\nREFERENCES\n[1] A. Jaech, A. Kalai, A. Lerer, A. Richardson, A. El-Kishky, A. Low,\nA. Helyar, A. Madry, A. Beutel, A. Carneyet al., “Openai o1 system\ncard,”arXiv preprint arXiv:2412.16720, 2024.\n[2] J. Xu, Z. Guo, J. He, H. Hu, T. He, S. Bai, K. Chen,\nJ. Wang, Y . Fan, K. Dang, B. Zhang, X. Wang, Y . Chu, and\nJ. Lin, “Qwen2.5-omni technical report,” 2025. [Online]. Available:\nhttps://arxiv.org/abs/2503.20215\n[3] D. Guo, D. Yang, H. Zhang, J. Song, R. Zhang, R. Xu, Q. Zhu, S. Ma,\nP. Wang, X. Biet al., “Deepseek-r1: Incentivizing reasoning capability"
+  },
+  {
+    "question": "What is the arXiv identifier and publication year for the paper authored by V. Aggarwal, O. Kamal, A. Japesh, Z. Jin, and B. Schölkopf?",
+    "ground_truth": "arXiv:2503.14269, 2025",
+    "context": "Procedural environments and hybrid verifiers for scaling open-weights\nswe agents,”arXiv preprint arXiv:2504.07164, 2025.\n[178] J. Wang, Y . Dai, Y . Zhang, Z. Ma, W. Li, and J. Chai, “Training turn-\nby-turn verifiers for dialogue tutoring agents: The curious case of llms\nas your coding tutors,”arXiv preprint arXiv:2502.13311, 2025.\n[179] H.-Y . Chen, C.-P. Huang, and J.-M. Yao, “Verbal process supervision\nelicits better coding agents,”arXiv preprint arXiv:2503.18494, 2025.\n[180] V . Aggarwal, O. Kamal, A. Japesh, Z. Jin, and B. Sch ¨olkopf, “Dars:\nDynamic action re-sampling to enhance coding agent performance by\nadaptive tree traversal,”arXiv preprint arXiv:2503.14269, 2025.\n[181] Z. Chen, X. Tang, G. Deng, F. Wu, J. Wu, Z. Jiang, V . Prasanna,"
+  },
+  {
+    "question": "What are the two sequential steps of Refiner-Attention described in the text?",
+    "ground_truth": "First, a linear expansion on the classic attention map; then, a linear reduction step that reshapes the DLA map back into the classic attention map format.",
+    "context": "Technologies 2025 ,13, 32 13 of 32\nThe first step of Refiner-Attention involves introducing linear expansion on the classic\nattention map. For each head, Refiner-Attention applies convolutions individually to\ncompute distributed local attention (DLA). A subsequent linear reduction step reshapes the\nDLA map back into the classic attention map format, similar to the ViT, extracting refined\nattention features from each head.\nBy integrating convolution operations with self-attention, Refiner-Attention efficiently\nachieves feature aggregation while retaining the global feature modeling capabilities inher-\nent to transformers.\n3.4.4. UniFormer\nLi et al. [ 53] introduced UniFormer, a novel Unified Transformer that seamlessly inte-"
+  },
+  {
+    "question": "According to the text, how does the ViT-B model capture feature information in images for classification tasks?",
+    "ground_truth": "By dividing the input image into multiple patches and using the self-attention mechanism.",
+    "context": "advancement of ViTs in image classification.\n3.1. The Baseline ViT-B and ViT-L Models\nThe ViT-B (ViT-Base) and ViT-L (ViT-Large) models [ 10] in the ViT family are crucial\nbenchmark models. The ViT-B model has a relatively moderate parameter scale and\nstrikes a good balance between model complexity and performance. When handling\nimage classification tasks, it can effectively capture the feature information in images by\ndividing the input image into multiple patches and using the self-attention mechanism"
+  },
+  {
+    "question": "What are the page numbers of the paper in the conference proceedings?",
+    "ground_truth": "2757–2791",
+    "context": "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing, pages 2757–2791\nNovember 4-9, 2025 ©2025 Association for Computational Linguistics\nFrom Generation to Judgment: Opportunities and Challenges of\nLLM-as-a-judge\nDawei Li♠, Bohan Jiang♠, Liangjie Huang♣, Alimohammad Beigi♠, Chengshuai Zhao♠,\nZhen Tan♠,Amrita Bhattacharjee♠,Yuxuan Jiang♦,Canyu Chen❦,Tianhao Wu❧,\nKai Shu❥,Lu Cheng♣,Huan Liu♠\n♠Arizona State University,♣University of Illinois Chicago,\n♦University of Maryland, Baltimore County,❦Northwestern University,\n❧University of California, Berkeley,❥Emory University\nAbstract\nAssessment and evaluation have long been crit-\nical challenges in artificial intelligence (AI)\nand natural language processing (NLP). Tra-\nditional methods, usually matching-based or"
+  },
+  {
+    "question": "What is the page range for the paper titled \"Dynamic intelligence assessment: Benchmarking llms on the road to agi with a focus on model confidence\"?",
+    "ground_truth": "pp. 3313–3321",
+    "context": "[81] N. Tihanyi, T. Bisztray, R. A. Dubniczky, R. Toth, B. Borsos, B. Cherif,\nR. Jain, L. Muzsai, M. A. Ferrag, R. Marinelliet al., “Dynamic\nintelligence assessment: Benchmarking llms on the road to agi with\na focus on model confidence,” in2024 IEEE International Conference\non Big Data (BigData). IEEE, 2024, pp. 3313–3321.\n[82] N. Tihanyi, M. A. Ferrag, R. Jain, T. Bisztray, and M. Debbah,\n“Cybermetric: a benchmark dataset based on retrieval-augmented gen-\neration for evaluating llms in cybersecurity knowledge,” in2024 IEEE\nInternational Conference on Cyber Security and Resilience (CSR).\nIEEE, 2024, pp. 296–302.\n[83] M. Kazemi, B. Fatemi, H. Bansal, J. Palowitch, C. Anastasiou, S. V .\nMehta, L. K. Jain, V . Aglietti, D. Jindal, P. Chenet al., “Big-bench"
+  },
+  {
+    "question": "What is the arXiv identifier for the paper titled \"Debatrix: Multi-dimensinal debate judge with iterative chronological analysis based on llm\"?",
+    "ground_truth": "arXiv:2403.08010",
+    "context": "ference on Empirical Methods in Natural Language\nProcessing , pages 11084–11108.\nJingcong Liang, Rong Ye, Meng Han, Ruofei Lai, Xinyu\nZhang, Xuanjing Huang, and Zhongyu Wei. 2024a.\nDebatrix: Multi-dimensinal debate judge with iter-\native chronological analysis based on llm. arXiv\npreprint arXiv:2403.08010 .\nSirui Liang, Baoli Zhang, Jun Zhao, and Kang Liu.\n2024b. Abseval: An agent-based framework for\nscript evaluation. In Proceedings of the 2024 Con-\nference on Empirical Methods in Natural Language\nProcessing , pages 12418–12434.\nTian Liang, Zhiwei He, Wenxiang Jiao, Xing Wang,\nYan Wang, Rui Wang, Yujiu Yang, Zhaopeng Tu, and\nShuming Shi. 2023. Encouraging divergent thinking\nin large language models through multi-agent debate.\nArXiv preprint , abs/2305.19118."
+  },
+  {
+    "question": "How many LLM and AI-agent benchmarks are approximately included in the proposed taxonomy?",
+    "ground_truth": "approximately 60",
+    "context": "highlights promising applications across various fields, includ-\ning software development [47], [48], multi-robot systems [49],\n[50], society simulation [51], policy simulation [52], and game\nsimulation [53].\nThe main contributions of this study are:\n•We present a comparative table of benchmarks developed\nbetween 2019 and 2025 that rigorously evaluate large lan-\nguage models and autonomous AI agents across multiple\ndomains.\n•We propose a taxonomy of approximately 60 LLM\nand AI-agent benchmarks, including general and aca-\ndemic knowledge reasoning, mathematical problem solv-\ning, code generation and software engineering, fac-\ntual grounding and retrieval, domain-specific evaluations,\nmultimodal and embodied tasks, task orchestration, and\ninteractive and agentic assessments."
+  },
+  {
+    "question": "What novel framework did Kouremetis et al. introduce to evaluate the cybersecurity risks of large language models in offensive cyber operations?",
+    "ground_truth": "OCCULT",
+    "context": "pipeline, and early findings indicate that Llama 3 70B nearly\nmatches GPT-4 Turbo across these tasks.\nQ. OCCULT Benchmark\nKouremetis et al. [80] present OCCULT, a novel and\nlightweight operational evaluation framework that rigorously\nmeasures the cybersecurity risks associated with using large\nlanguage models (LLMs) for offensive cyber operations\n(OCO). Traditionally, evaluating AI in cybersecurity has relied\non simplistic, all-or-nothing tests such as capture-the-flag exer-\ncises, which fail to capture the nuanced threats faced by mod-\nern infrastructure. In contrast, OCCULT enables cybersecurity\nexperts to craft repeatable and contextualized benchmarks by\nsimulating real-world threat scenarios. The authors detail three\ndistinct OCO benchmarks designed to assess the capability"
+  },
+  {
+    "question": "What is the name of the LLM-based multi-agent system introduced by Xu et al. for film automation?",
+    "ground_truth": "FilmAgent",
+    "context": "create an autonomous GIS agent for geospatial data retrieval,\nmarking a significant advancement in spatial data automation.\n11) Multimedia Applications:Multimedia is an emerging\nfrontier for LLM-based agents, where creative and interpretive\ntasks require coordination across diverse modalities, including\ntext, audio, image, and video. In this subsection, we present\nrecent advancements in applying agent-based language learn-\ning and machine learning (LLM) systems to domains such as\nfilm production, music and poetry generation, drama scripting,\nfashion assistance, and lyric composition. Fig. 12 presents a\nclassification of agent LLM applications for Multimedia.\na) Film Automation Agents:Xu et al. [212] introduce\nFilmAgent, an innovative LLM-based multi-agent collabora-"
+  },
+  {
+    "question": "How many case simulations did EvoPatient run, and how many hours did this process take?",
+    "ground_truth": "200 case simulations over ten hours",
+    "context": "tuning, but EvoPatient emphasizes unsupervised simulation to\nteach patient agents standardized presentation patterns. In this\nsystem, a patient agent and doctor agents engage in iterative\nconsultations, with each dialogue cycle serving to both train\nthe agents and gather experience that refines patient responses\nand physician questions. Extensive experiments across di-\nverse clinical scenarios show that EvoPatient improves re-\nquirement alignment by more than 10 percent compared to\nstate-of-the-art methods and achieves higher human preference\nratings. After evolving through 200 case simulations over ten\nhours, the framework achieves an optimal balance between\nresource efficiency and performance, demonstrating strong\ngeneralizability for scalable medical training."
+  },
+  {
+    "question": "What is the name of the language agent introduced by Wang et al. that includes self‑verification capabilities?",
+    "ground_truth": "GeneAgent",
+    "context": "agents designed to support knowledge discovery, enhance\nreasoning capabilities, and evaluate scientific literature. In\nthis subsection, we review recent contributions that focus on\ngene set analysis, iterative learning for improved reasoning,\nand the evaluation of AI scientist agents through specialized\nbiomedical benchmarks.\na) Gene Set Knowledge Discovery:Gene set knowl-\nedge discovery is crucial for advancing human functional\ngenomics, yet traditional LLM approaches often suffer from\nissues like hallucinations. To address this, Wang et al. [141]\nintroduce GeneAgent a pioneering language agent with self-\nverification capabilities that autonomously interacts with bio-\nlogical databases and leverages specialized domain knowledge\nto enhance accuracy. Benchmarking on 1,106 gene sets from"
+  },
+  {
+    "question": "Which figure is referenced as presenting a classification of Agent LLM Applications for Finance?",
+    "ground_truth": "Fig. 10",
+    "context": "Multi-Agent\nCollaboration\n[194]FinSphere\n[195]MarketSenseAI\n[196]\nAgentic Financial\nModeling\n& Risk\nManagement\nAgentic Crews\n[197]\nTrustworthy\nConversational\nShopping Agents\nCitation-Enhanced\nCSA\n[198]\nFig. 10: Agent LLM Applications in Finance\n7) Finance Applications:Finance is a dynamic domain\nwhere the adoption of LLM-based agents has opened new\navenues for automation, simulation, analysis, and decision\nsupport. This subsection presents recent innovations that span\nstructured finance automation, market simulation, investment\ndecision-making, financial reasoning, stock analysis, and risk\nmanagement. Fig. 10 presents a classification of Agent LLM\nApplications for Finance."
+  },
+  {
+    "question": "Which study first proposed training reward models with synthetic preferences from pre-trained LLMs?",
+    "ground_truth": "Bai et al. (2022)",
+    "context": "et al., 2025), and human-computer interaction (Li\net al., 2024j).C.2 Alignment\nAlignment tuning is a vital technique to align LLMs\nwith human preferences and values (Wei et al.,\n2022a; Ouyang et al., 2022; Rafailov et al., 2023).\nIn this section, we discuss the use of larger LLMs\nas judges (Section C.2.1) and self-judging (Sec-\ntion C.2.2) for alignment.\nC.2.1 Larger Models as Judges\nRecently, alignment tuning leverages feedback\nfrom larger LLMs to guide smaller models. Bai\net al. (2022) first propose to train reward mod-\nels with synthetic preferences from pre-trained\nLLMs. Following this, there are also some works\nexplore online learning (Guo et al., 2024) and di-\nrect preference optimization (Lee et al., 2023) with\nlarger models as judges. To prevent reward hack-"
+  },
+  {
+    "question": "In what year did Google introduce the Agent2Agent (A2A) protocol?",
+    "ground_truth": "2025",
+    "context": "clients to cancel operations or receive detailed diagnostics\nwhen calls fail.\n3) Agent-to-Agent Protocol (A2A):In 2025, Google intro-\nduced the Agent2Agent (A2A) protocol to usher in a new\nera of seamless interoperability among AI agents, significantly\nenhancing workplace productivity and automation [222]. The\nprotocol is designed to facilitate dynamic collaboration be-\ntween autonomous agents, enabling them to work together\nacross isolated data systems and diverse applications regard-\nless of their underlying frameworks or vendors. Using familiar\nstandards such as HTTP, SSE, and JSON-RPC, A2A simplifies\nintegration with existing IT infrastructures while also ensuring\nrobust enterprise-grade security through proven authentication\nand authorization practices. A2A supports both swift and"
+  },
+  {
+    "question": "What percentage improvement was observed in Llama 3.1 8B after fine‑tuning?",
+    "ground_truth": "14%",
+    "context": "math, and coding domains. The benchmark employs a novel\npipeline to transform challenging existing datasets into paired\ncomparisons with preference labels based on objective correct-\nness while mitigating positional bias through double evaluation\nwith swapped order. Comprehensive testing across various\njudge architectures, including prompted, fine-tuned, multi-\nagent judges, and reward models, reveals that even strong\nmodels, such as GPT-4o, often perform only marginally better\nthan random guessing, particularly on tasks requiring rigorous\nerror detection in intermediate reasoning steps. Moreover, fine-\ntuning can significantly boost performance, as evidenced by\na 14% improvement observed in Llama 3.1 8B, and reward\nmodels achieve accuracies in the 59–64% range.\nJ. SimpleQA Benchmark"
+  },
+  {
+    "question": "What percentage of cases did PsyDraw achieve High Consistency with expert evaluations?",
+    "ground_truth": "71.03%",
+    "context": "submissions, PsyDraw achieved High Consistency with expert\nevaluations in 71.03% of cases and Moderate Consistency\nin 26.21%, flagging 31.03% of children as needing further\nattention. Deployed in pilot schools, PsyDraw demonstrates\nstrong potential as a scalable, preliminary screening tool that\nmaintains high professional standards and addresses critical\nmental health gaps in resource-limited settings.\nLee et al. [163] introduce PSYCHE, a comprehensive frame-\nwork for benchmarking psychiatric assessment conversational\nagents (PACAs) built on large language models. Recognizing\nthat psychiatric evaluations rely on nuanced, multi-turn inter-\nactions between clinicians and patients, PSYCHE simulates\npatients using a detailed psychiatric construct that specifies"
+  },
+  {
+    "question": "What is the arXiv identifier of the 2023a paper titled \"Exploring the reliability of large language models as customized evaluators for diverse nlp tasks\"?",
+    "ground_truth": "arXiv:2310.19740",
+    "context": "2023a. Exploring the reliability of large language\nmodels as customized evaluators for diverse nlp tasks.\narXiv preprint arXiv:2310.19740 .\nRenhao Li, Minghuan Tan, Derek F Wong, and Min\nYang. 2024i. Coevol: Constructing better responses\nfor instruction finetuning through multi-agent coop-\neration. ArXiv preprint , abs/2406.07054.\nRuosen Li, Ruochen Li, Barry Wang, and Xinya Du.\n2024j. Iqa-eval: Automatic evaluation of human-\nmodel interactive question answering. Advances in\nNeural Information Processing Systems , 37:109894–\n109921.\nRuosen Li, Teerth Patel, and Xinya Du. 2023b.\nPrd: Peer rank and discussion improve large lan-\nguage model based evaluations. ArXiv preprint ,\nabs/2307.02762.\nTianle Li, Wei-Lin Chiang, Evan Frick, Lisa Dunlap,\nTianhao Wu, Banghua Zhu, Joseph E Gonzalez, and"
+  },
+  {
+    "question": "What is the arXiv identifier listed for the paper titled \"Wider and deeper llm networks are fairer llm evaluators\"?",
+    "ground_truth": "abs/2308.01862",
+    "context": "for multimodal medical models. arXiv preprint\narXiv:2412.11453 .Xinghua Zhang, Bowen Yu, Haiyang Yu, Yangyu Lv,\nTingwen Liu, Fei Huang, Hongbo Xu, and Yongbin\nLi. 2023. Wider and deeper llm networks are fairer\nllm evaluators. ArXiv preprint , abs/2308.01862.\nYueheng Zhang, Xiaoyuan Liu, Yiyou Sun, Atheer Al-\nharbi, Hend Alzahrani, Basel Alomair, and Dawn\nSong. 2025e. Can llms design good questions based\non context? arXiv preprint arXiv:2501.03491 .\nFuheng Zhao, Lawrence Lim, Ishtiyaque Ahmad, Di-\nvyakant Agrawal, and Amr El Abbadi. 2023a. Llm-\nsql-solver: Can llms determine sql equivalence?\narXiv preprint arXiv:2312.10321 .\nJian Zhao, Runze Liu, Kaiyan Zhang, Zhimu Zhou,\nJunqi Gao, Dong Li, Jiafei Lyu, Zhouyi Qian, Biqing\nQi, Xiu Li, and 1 others. 2025. Genprm: Scaling"
+  },
+  {
+    "question": "What two components does the PTLCH approach introduced by Ren et al. combine?",
+    "ground_truth": "pooling-based Vision Transformer features and low-complexity attention modules",
+    "context": "ness issues.\n3.14. Other Improvements\nRen et al. [ 88] introduced a pooling-based Visual Transformer with low-complexity\nattention hashing (PTLCH) for image retrieval. Their approach combines pooling-based\nVision Transformer features with low-complexity attention modules, enriching contextual\ninformation and improving retrieval accuracy."
+  },
+  {
+    "question": "What paradigm, mentioned in the text, leverages Large Language Models to perform scoring, ranking, or selection in machine learning evaluation scenarios?",
+    "ground_truth": "LLM-as-a-judge",
+    "context": "ical challenges in artificial intelligence (AI)\nand natural language processing (NLP). Tra-\nditional methods, usually matching-based or\nsmall model-based, often fall short in open-\nended and dynamic scenarios. Recent advance-\nments in Large Language Models (LLMs) in-\nspire the “LLM-as-a-judge” paradigm, where\nLLMs are leveraged to perform scoring, rank-\ning, or selection for various machine learning\nevaluation scenarios. This paper presents a\ncomprehensive survey of LLM-based judgment\nand assessment, offering an in-depth overview\nto review this evolving field. We first provide\nthe definition from both input and output per-\nspectives. Then we introduce a systematic tax-\nonomy to explore LLM-as-a-judge along three\ndimensions: what to judge, how to judge, and"
+  },
+  {
+    "question": "What is the reported success rate of the framework on the MUSTARDSAUCE dataset when using o1-mini?",
+    "ground_truth": "up to a 34% success rate",
+    "context": "32\nSolving\nMathematical\nProblems\nMathematical\nReasoning\n& Problem Solving\nMACM\n[201]\nMathLearner\n[202]\nPrompt\nSampling\n[203]\nFlows\n[204]KG-Proofs\n[205]MA-LoT\n[206]Educational &\nTutoring\nApplications\nMATHVC\n[207]PACE\n[208]Numerical\nReasoning\nAgent Trading\nArena\n[209]\nFig. 11: Agent LLM Applications in Solving Mathematical\nProblems\nin automating the identification of key mathematical concepts,\nunderstanding their relationships, and embedding them within\nrigorous logical frameworks. Experimental results show sig-\nnificant performance gains, with the framework achieving up\nto a 34% success rate on the MUSTARDSAUCE dataset on\no1-mini and consistently outperforming baseline models by\n2–11% across various benchmarks.\nWang et al. [206] introduce MA-LoT, a novel multi-agent"
+  },
+  {
+    "question": "What is the arXiv identifier for the 2024 paper titled \"Alma: Alignment with minimal annotation\"?",
+    "ground_truth": "arXiv:2412.04305",
+    "context": "in language models. In The Eleventh International\nConference on Learning Representations, ICLR 2023,\nKigali, Rwanda, May 1-5, 2023 . OpenReview.net.\nMichihiro Yasunaga, Leonid Shamis, Chunting Zhou,\nAndrew Cohen, Jason Weston, Luke Zettlemoyer,\nand Marjan Ghazvininejad. 2024. Alma: Align-\nment with minimal annotation. arXiv preprint\narXiv:2412.04305 .\nJiayi Ye, Yanbo Wang, Yue Huang, Dongping Chen,\nQihui Zhang, Nuno Moniz, Tian Gao, Werner Geyer,\nChao Huang, Pin-Yu Chen, and 1 others. 2024a. Jus-\ntice or prejudice? quantifying biases in llm-as-a-\njudge. ArXiv preprint , abs/2410.02736.\nSeonghyeon Ye, Doyoung Kim, Sungdong Kim, Hyeon-\nbin Hwang, Seungone Kim, Yongrae Jo, James\nThorne, Juho Kim, and Minjoon Seo. 2024b.\nFLASK: Fine-grained language model evaluation"
+  },
+  {
+    "question": "What is the arXiv identifier of the paper titled \"Agentharm: A benchmark for measuring harmfulness of llm agents\"?",
+    "ground_truth": "arXiv:2410.09024",
+    "context": "minecraft,”arXiv preprint arXiv:2412.05255, 2024.\n[103] M. Andriushchenko, A. Souly, M. Dziemian, D. Duenas, M. Lin,\nJ. Wang, D. Hendrycks, A. Zou, Z. Kolter, M. Fredriksonet al.,\n“Agentharm: A benchmark for measuring harmfulness of llm agents,”\narXiv preprint arXiv:2410.09024, 2024.\n[104] H. Li, J. Chen, J. Yang, Q. Ai, W. Jia, Y . Liu, K. Lin, Y . Wu, G. Yuan,\nY . Huet al., “Legalagentbench: Evaluating llm agents in legal domain,”\narXiv preprint arXiv:2412.17259, 2024.\n[105] D. Rein, B. L. Hou, A. C. Stickland, J. Petty, R. Y . Pang, J. Dirani,\nJ. Michael, and S. R. Bowman, “Gpqa: A graduate-level google-proof\nq&a benchmark,” inFirst Conference on Language Modeling, 2024.\n[106] X. Tang, D. Shao, J. Sohn, J. Chen, J. Zhang, J. Xiang, F. Wu, Y . Zhao,"
+  },
+  {
+    "question": "What property of the source images does Mustafa et al.'s multisensor image fusion framework leverage to enhance feature representation and texture recovery?",
+    "ground_truth": "The internal patch-recurrence property of the source images.",
+    "context": "dependencies, and semantic features. Extensive comparison experiments showcase the\nsuperiority of SePT over other advanced fusion approaches.\nMustafa et al. [ 62] proposed a multisensor image fusion framework combining visible\n(VI) and infrared (IR) images using Vision Transformers and graph attention. The frame-\nwork leverages the internal patch-recurrence property of source images, enhancing feature\nrepresentation and texture recovery. Transformer blocks capture high-frequency domain-\nspecific information, while the graph attention mechanism utilizes similarity and symmetry\ninformation across patches to guide feature learning. The introduced graph attention fu-\nsion block (GAFB) improves selectivity and effectiveness in feature learning by identifying"
+  },
+  {
+    "question": "According to the text, what does the process of multi-turn interaction typically begin with?",
+    "ground_truth": "It begins with an initial query or topic.",
+    "context": "To improve the robustness of LLM evaluations,\nHasanbeig et al. (2023) propose ALLURE, an ap-\nproach that iteratively incorporates demonstrations\nof significant deviations to enhance the evaluator’s\nrobustness. Additionally, Song et al. (2024b) bor-\nrow the insights from many-shot in-context learn-\ning and apply it in LLM-as-a-judge applications.4.2.5 Multi-turn Interaction\nA single response may not provide enough infor-\nmation for an LLM judge to thoroughly and fairly\nassess each candidate. To address this limitation,\nmulti-turn interactions are proposed to offer a more\ncomprehensive evaluation. Typically, the process\nbegins with an initial query or topic, followed by\ndynamically interacting between the LLM judge\nand candidate models (Bai et al., 2023b; Yu et al.,"
+  },
+  {
+    "question": "Which study presented a chronological overview of model advancements and covered a wide range of architectures from early ViT designs to modern lightweight transformer models?",
+    "ground_truth": "Khalil et al. [16]",
+    "context": "Technologies 2025 ,13, 32 2 of 32\nmedical image analysis, covering tasks like classification, segmentation, and detection.\nKhalil et al. [ 16] conducted a comprehensive survey on ViTs for image classification, pre-\nsenting a chronological overview of model advancements and covering a wide range of\narchitectures from early ViT designs to modern lightweight transformer models. Their\nwork highlights dataset dependencies, key milestones in transformer development, and\nbroad trends across transformer-based models. In contrast, our manuscript focuses specif-\nically on the technical advancements and architectural optimizations of ViTs for image\nclassification. We delve into model-level comparisons, such as ViT-L vs. ViT-B, and em-"
+  },
+  {
+    "question": "What is the arXiv identifier for the paper titled \"Online self-preferring language models\"?",
+    "ground_truth": "abs/2405.14103",
+    "context": "Zhiyuan Zeng, Jiatong Yu, Tianyu Gao, Yu Meng, Tanya\nGoyal, and Danqi Chen. Evaluating large language\nmodels at evaluating instruction following. In The\nTwelfth International Conference on Learning Repre-\nsentations .\nYuanzhao Zhai, Zhuo Zhang, Kele Xu, Hanyang Peng,\nYue Yu, Dawei Feng, Cheng Yang, Bo Ding, and\nHuaimin Wang. 2024. Online self-preferring lan-\nguage models. ArXiv preprint , abs/2405.14103.\nBang Zhang, Ruotian Ma, Qingxuan Jiang, Peisong\nWang, Jiaqi Chen, Zheng Xie, Xingyu Chen, Yue\nWang, Fanghua Ye, Jian Li, and 1 others. 2025a.\nSentient agent as a judge: Evaluating higher-order\nsocial cognition in large language models. arXiv\npreprint arXiv:2505.02847 .\nChen Zhang, Luis Fernando D’Haro, Yiming Chen,\nMalu Zhang, and Haizhou Li. 2024a. A compre-"
+  },
+  {
+    "question": "Which 2025 paper analyzes 1,676 RPAs, identifies core attributes, and proposes standardized evaluation guidelines?",
+    "ground_truth": "Chen et al. [58]",
+    "context": "tion, tool use, and collaboration.\nAgent Architectures\n& EvaluationYehudai et\nal. [57]2025 Surveys evaluation methodologies and bench-\nmarks for LLM agents, covering cost, safety,\nand robustness.\nAgent Architectures\n& EvaluationChen et\nal. [58]2025 Analyzes 1,676 RPAs, identifies core attributes,\nand proposes standardized evaluation guide-\nlines.\nMulti-Agent\nSystemsYan et\nal. [59]2025 Comprehensive survey of LLM-powered MAS;\nfocuses on communication, scalability, security,\nand multimodality.\nMulti-Agent\nSystemsGuo et\nal. [45]2024 Traces evolution from single-agent LLM rea-\nsoning to collaborative MAS; examines profil-\ning and communication.\nHealthcare Wang et\nal. [34]2025 Reviews LLM-agent architectures for clinical\ndecision support, documentation, training; dis-\ncusses ethics."
+  },
+  {
+    "question": "Which authors presented an LLM-based evaluation framework using synthetic queries to judge RAG agent performance?",
+    "ground_truth": "Rackauckas et al. (2024)",
+    "context": "main of Q&A, Rackauckas et al. (2024) present an\nLLM-based evaluation framework using synthetic\nqueries to judge RAG agent performance. Zhang\net al. (2024c) study LLMs’ ability to assess rele-\nvance versus utility. In the biomedical area, several\nstudies explore the usage of LLM-as-a-judge for\nactive and dynamic retrival (Wang et al., 2024b) or\nretrieved knowledge filtering (Jeong et al., 2024;\nLi et al., 2024c).\nC.4 Reasoning\nReasoning is a critical aspect of LLMs because it\ndirectly affects their ability to solve complex prob-\nlems. Recently, many studies leverage LLM-as-a-\njudge in reasoning path selection (Section C.4.1)\nand external source utilization (Section C.4.2).\nC.4.1 Reasoning Path Selection\nWhile many complex reasoning and cognition struc-"
+  },
+  {
+    "question": "What is the improved version of the Tokenizer introduced by Wu et al. called?",
+    "ground_truth": "the Recurrent Tokenizer",
+    "context": "The purpose is to project each pixel Xp∈RCinto one of the Lsemantic groups.\n3. Compute ATX=T∈RL×CT, where Trepresents visual tokens and L≪HW.\nThe Tokenizer enables transformers to focus on Ltokens rather than all HW pixels.\nThis design significantly reduces the computational burden while improving the ability to\nextract high-level features.\nWu et al. also introduced an improved version of the Tokenizer, called the Recurrent\nTokenizer [ 48]. This mechanism uses visual tokens T′from the previous layer to guide the\nformation of the current tokens T:"
+  },
+  {
+    "question": "Which model listed achieves the highest Real V2 Top‑1 accuracy, and what is that accuracy?",
+    "ground_truth": "CaiT-M48 with a Real V2 Top‑1 accuracy of 76.9%.",
+    "context": "LeViT-192 [68] 10.9 0.7 80.0 85.7 68.0\nLeViT-256 [68] 18.9 1.1 81.6 86.8 70.0\nLeViT-384 [68] 39.1 2.2 82.6 87.6 71.3\nCaiT-S36 [74] 68 13.9 83.3 88.0 72.5\nCaiT-M36 ↑384γ[74] 271 173.3 86.1 90.0 76.3\nCaiT-M48 ↑448γ[74] 356 329.6 86.5 90.2 76.9\nDeepViT-S [51] 27 6.2 81.4 - -\nDeepViT-L [51] 55 12.5 82.2 - -\nModel (CNNs) Params. (M) FLOPs. (G) ImNet Real V2\nTop-1 Top-1 Top-1\nRegNetY-16GF [44] 84 16.0 82.9 88.1 72.4\nResNet-50 [19] 25 4.1 76.2 82.5 63.3\nResNet-101 [19] 45 7.9 77.4 83.7 65.7\nResNet-152 [19] 60 11 78.3 84.1 67.0\nEfficientNet-B5 [4] 30 9.9 83.6 88.3 73.6\nEfficientNet-B7 [4] 84.3 66 37.0 84.3 -\nNFNet-F0 [95] 72 12.4 83.6 88.1 72.6\nNFNet-F3 [95] 255 114.8 85.7 88.9 74.4\nNFNet-F6+SAM [95] 438 377.3 86.5 89.9 75.8"
+  },
+  {
+    "question": "Which evaluation dataset listed is associated with 3.3K human annotations and evaluates accuracy and correlation on non-English and challenging question answering tasks?",
+    "ground_truth": "KUDGE (Son et al., 2024a)",
+    "context": "LLM-judge-\neval (Wei et al.,\n2024a)Summarization,\nAlignment1K HumanAccuracy, Flipping\nNoise, Position Bias,\nLength BiasGeneral Performance\nDHP (Wang\net al., 2024j)Various Tasks 400 Human Discernment Score General Performance\nEvalBiasBench\n(Park et al.,\n2024)Alignment 80 Human Accuracy Various Bias\nRaju et al.\n(2024)Various Tasks 1.5K HumanSeparability, Agreement,\nBrierScoreDomain-specific Performance\nMLLM-as-a-\njudge (Chen\net al., 2024a)Various Tasks 30K HumanHuman Agreement,\nAnalysis Grading,\nHallucination DetectionMultimodal\nMM-EV AL\n(Son et al.,\n2024b)Various Tasks 5K Human Accuracy Multilingual\nKUDGE (Son\net al., 2024a)Question\nAnswering3.3KHuman &\nGPT-4oAccuracy, Correlation Non-English & Challenging\nMurugadoss\net al. (2024)Various Tasks - Human CorrelationEvaluation Instruction"
+  },
+  {
+    "question": "Who are the authors of the paper titled \"Badjudge: Backdoor vulnerabilities of llm-as-a-judge\"?",
+    "ground_truth": "Terry Tong, Fei Wang, Zhe Zhao, and Muhao Chen",
+    "context": "of the 47th International ACM SIGIR Conference on\nResearch and Development in Information Retrieval ,\npages 1930–1940.\nTerry Tong, Fei Wang, Zhe Zhao, and Muhao Chen.\n2025. Badjudge: Backdoor vulnerabilities of llm-as-\na-judge. In The Thirteenth International Conference\non Learning Representations .2778"
+  },
+  {
+    "question": "According to Table 3, which model achieved the highest accuracy on the CIFAR-10 dataset?",
+    "ground_truth": "CaiT-M36 γ",
+    "context": "Technologies 2025 ,13, 32 27 of 32\nTable 3. Cont.\nModels CIFAR-10 CIFAR100 Pets Flowers Cars\nCvT-13 [49] 98.83 91.11 93.25 99.50 -\nCvT-21 [49] 99.16 92.88 94.03 99.62 -\nCvT-W24 [49] 99.39 94.09 94.73 99.72 -\nCeiT-T [50] 98.5 88.4 93.8 - 90.5\nCeiT-S [50] 99.1 90.8 94.9 - 93.2\nCaiT-S36 [74] 99.2 92.2 - 98.8 93.5\nCaiT-M36 [74] 99.3 93.3 - 99.0 93.5\nCaiT-M36 γ[74] 99.4 93.1 - 99.1 94.2\n5. Conclusions and Discussions\n5.1. Challenges\nAlthough CV transformer models have demonstrated significant potential in image\nclassification tasks using standard benchmark datasets such as ImageNet and CIFAR, their\napplication to domain-specific tasks, such as medical imaging or traffic analysis, remains\nlimited. A key challenge is the lack of inductive bias [ 10], which makes transformers"
+  },
+  {
+    "question": "What top-1 accuracy does UniFormer achieve on ImageNet-1K without requiring additional training data?",
+    "ground_truth": "86.3",
+    "context": "ent to transformers.\n3.4.4. UniFormer\nLi et al. [ 53] introduced UniFormer, a novel Unified Transformer that seamlessly inte-\ngrates the strengths of convolution and self-attention, addressing challenges in learning\ndiscriminative representations from visual data. Unlike traditional transformer blocks,\nUniFormer employs relation aggregators with local and global token affinity in shal-\nlow and deep layers, effectively managing redundancy and dependency for efficient\nrepresentation learning.\nThe flexible stacking of UniFormer blocks forms a robust backbone suitable for vari-\nous vision tasks. UniFormer achieves a top-1 accuracy of 86.3 on ImageNet-1K without\nrequiring additional training data. It also demonstrates state-of-the-art performance across"
+  },
+  {
+    "question": "What are the two perspectives used to discuss tuning approaches for LLM-as-a-judge in the text?",
+    "ground_truth": "data sources (Section 4.1.1) and training techniques (Section 4.1.2)",
+    "context": "et al., 2024b; Piergentili et al., 2025; Wang et al.,\n2025d), the evaluation dimensions are less diverse\ncompared to more open-ended, long-form gener-\nation tasks. As a result, LLM-as-a-judge is often\nprompted directly to produce an overall judgment\nin these tasks.\n4 Methodology\nIn this section, we present commonly adopted meth-\nods and tricks to improve LLMs’ judging capabil-\nities, splitting them into tuning (Section 4.1) and\nprompting strategies (Section 4.2).\n4.1 Tuning\nTo enhance the judging capabilities of a general\nLLM, various tuning techniques have been em-\nployed in different studies. In this section, we dis-\ncuss these tuning approaches for LLM-as-a-judge\nfrom two perspectives: data sources (Section 4.1.1)\nand training techniques (Section 4.1.2).4.1.1 Data Source"
+  },
+  {
+    "question": "What is the name of the first LLM-based agent system explicitly tailored for materials science mentioned in the text?",
+    "ground_truth": "HoneyComb",
+    "context": "initiating telescope observations, real-time image analysis, and\nformulating follow-up proposals to reduce the operational\nburden on astronomers and lower training costs. By integrating\nthese agents into the observation process, the system can effi-\nciently verify and dispatch observation lists, analyze transient\nphenomena in near real-time, and seamlessly communicate\nresults to observatory teams for subsequent scheduling.\nb) Materials Science Research:HoneyComb [140] is\nintroduced as the first LLM-based agent system tailored ex-\nplicitly for materials science, addressing the unique challenges\nposed by complex computational tasks and outdated implicit\nknowledge that often lead to inaccuracies and hallucinations\nin general-purpose LLMs. The system leverages a novel, high-"
+  },
+  {
+    "question": "Which transformer model introduced a new position-encoding layer and utilizes CNN characteristics to compute adaptive position embeddings?",
+    "ground_truth": "The Conditional Position-encoding Vision Transformer (CPVT)",
+    "context": "come an important direction for improving transformer performance. The Conditional\nPosition-encoding Vision Transformer (CPVT) introduced a new position-encoding layer\nand utilized the characteristics of CNNs to compute adaptive position embeddings, en-\nhancing model performance. The Token-based Visual Transformer (VT) sampled input\nimages into semantic visual tokens using CNNs and then extracted relationships using\ntransformers, improving feature extraction capabilities. In addition to this, models such as"
+  },
+  {
+    "question": "Which disease categories are included in the comprehensive DDx benchmark presented by the authors?",
+    "ground_truth": "Respiratory, skin, and rare diseases.",
+    "context": "plete patient profiles from the outset. Addressing limitations\nin previous approaches such as evaluations on single datasets,\nisolated component optimization, and single-attempt diag-\nnoses MEDDxAgent integrates three modular components:\nan orchestrator (DDxDriver), a history-taking simulator, and\ntwo specialized agents for knowledge retrieval and diagnosis\nstrategy. To ensure robust evaluation, the authors also present\na comprehensive DDx benchmark covering respiratory, skin,\nand rare diseases. Their findings reveal that iterative refinement\nsignificantly enhances diagnostic accuracy, with MEDDxA-\ngent achieving over a 10% improvement across both large\nand small LLMs while providing critical explainability in its\nreasoning process."
+  },
+  {
+    "question": "According to the text, what does the MCP protocol standardize?",
+    "ground_truth": "How AI applications provide context to LLMs.",
+    "context": "code execution environments) without blowing up action\nspaces; how to design more nuanced reward functions that\ncapture partial credit for intermediate reasoning or mitigate\nreward hacking; how to ensure robustness and interpretability\nwhen agents autonomously interleave reasoning and tool use;\nand how to balance exploration of novel tool sequences against\nexploitation of known effective patterns. Addressing these\nquestions will be crucial for realizing truly versatile, trust-\nworthy LLM agents capable of complex, multi-step problem-\nsolving.\nF . Vulnerabilities of AI Agents Protocols\nMCP protocol standardizes how AI applications provide\ncontext to LLMs. The MCP protocol faces critical vulnera-\nbilities in Agent AI communications due to its fundamentally"
+  }
+]
