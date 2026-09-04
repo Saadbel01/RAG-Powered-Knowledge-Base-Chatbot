@@ -6,7 +6,7 @@ from rag_chatbot.config import get_settings
 from rag_chatbot.ingestion.chunker import create_chunks
 from rag_chatbot.ingestion.loader import load_documents
 import structlog
-import sys
+
 
 log = structlog.get_logger(__name__)
 
@@ -31,13 +31,15 @@ def generate_testset(n_samples: int = 50) -> list[dict]:
         temperature=0,
         groq_api_key=settings.groq_api_key)
 
-    try:
+    for i, sample in enumerate(random_samples):
 
-        for i, sample in enumerate(random_samples):
-
-            prompt = f"""Read the following text and generate ONE clear question that can be 
-                    answered ONLY from this text, plus the exact correct answer.
-                    Respond in JSON: {"question": "...", "answer": "..."}
+        try:
+            json_format = '{"question": "...", "answer": "..."}'
+            prompt = f"""Read the following text and generate ONE clear
+                    question that can be
+                    answered ONLY from this text,
+                    plus the exact correct answer.
+                    Respond in JSON: {json_format}
 
                     Text:
                     {sample.page_content}"""
@@ -49,11 +51,11 @@ def generate_testset(n_samples: int = 50) -> list[dict]:
                 "context": sample.page_content
             })
             log.info("generate.progress", done=i + 1, total=n_samples)
-    except Exception as e:
-        log.error("generate.error", chunk_id=i, error=str(e))
+        except Exception as e:
+            log.error("generate.error", chunk_id=i, error=str(e))
 
     output_path = Path("evaluation/testset.json")
-    output_path.mkdir(exist_ok=True)
+    output_path.parent.mkdir(exist_ok=True)
     output_path.write_text(
         json.dumps(results, indent=2, ensure_ascii=False)
     )
