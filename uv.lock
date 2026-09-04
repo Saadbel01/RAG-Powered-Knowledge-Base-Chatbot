@@ -925,6 +925,21 @@ wheels = [
 ]
 
 [[package]]
+name = "nltk"
+version = "3.9.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "joblib" },
+    { name = "regex" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3c/87/db8be88ad32c2d042420b6fd9ffd4a149f9a0d7f0e86b3f543be2eeeedd2/nltk-3.9.1.tar.gz", hash = "sha256:87d127bd3de4bd89a4f81265e5fa59cb1b199b27440175370f7417d2bc7ae868", size = 2904691, upload-time = "2024-08-18T19:48:37.769Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4d/66/7d9e26593edda06e8cb531874633f7c2372279c3b0f46235539fe546df8b/nltk-3.9.1-py3-none-any.whl", hash = "sha256:4fa26829c5b00715afe3061398a8989dc643b92ce7dd93fb4585a70930d168a1", size = 1505442, upload-time = "2024-08-18T19:48:21.909Z" },
+]
+
+[[package]]
 name = "nodeenv"
 version = "1.10.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1578,6 +1593,7 @@ dependencies = [
     { name = "langchain-huggingface" },
     { name = "langchain-pinecone" },
     { name = "langsmith" },
+    { name = "nltk" },
     { name = "pandas" },
     { name = "pinecone-client" },
     { name = "pydantic" },
@@ -1617,6 +1633,7 @@ requires-dist = [
     { name = "langchain-huggingface", specifier = "==0.1.0" },
     { name = "langchain-pinecone", specifier = "==0.2.0" },
     { name = "langsmith", specifier = "==0.1.129" },
+    { name = "nltk", specifier = "==3.9.1" },
     { name = "pandas", specifier = "==2.2.0" },
     { name = "pinecone-client", specifier = "==5.0.0" },
     { name = "pydantic", specifier = "==2.9.0" },
