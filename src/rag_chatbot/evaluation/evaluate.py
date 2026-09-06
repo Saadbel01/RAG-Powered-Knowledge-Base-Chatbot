@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 
+import math
 import structlog
 from datasets import Dataset
 from langchain_groq import ChatGroq
@@ -68,6 +69,7 @@ def run_evaluation(testset_path: str = "evaluation/testset.json") -> dict:
         model_name=settings.embed_model,
         model_kwargs={"device": "cpu"},
         encode_kwargs={"normalize_embeddings": True},
+        raise_exceptions=False
     )
 
     scores = evaluate(
@@ -95,16 +97,17 @@ def run_evaluation(testset_path: str = "evaluation/testset.json") -> dict:
     print(" " + "-" * 50)
 
     for metric, score in means.items():
+        if math.isnan(score):
+            print(f" {metric:<24} {'N/A':>6} {TARGETS[metric]:.3f} ERROR")
+            continue
         bar = "#" * int(score * 20)
         status = "PASS" if score >= TARGETS[metric] else "FAIL"
-
         print(
             f" {metric:<24} "
             f"{score:.3f} "
             f"{TARGETS[metric]:.3f} "
             f"{status}"
         )
-
         print(f" {'':24} [{bar:<20}]")
 
     print("=" * 58)
