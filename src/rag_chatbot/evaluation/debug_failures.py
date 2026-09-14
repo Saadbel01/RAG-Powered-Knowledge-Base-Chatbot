@@ -3,7 +3,6 @@ from pathlib import Path
 import pandas as pd
 import structlog
 
-
 log = structlog.get_logger(__name__)
 
 
@@ -30,6 +29,15 @@ CHECKS = [
         "Increase TOP_K -- not enough context is reaching the LLM",
     ),
 ]
+
+
+def _first_value(row: pd.Series, *columns: str) -> str:
+    """Return the first available value from compatible result schemas."""
+    for column in columns:
+        value = row.get(column)
+        if pd.notna(value):
+            return str(value)
+    return ""
 
 
 def debug_failures(
@@ -64,10 +72,12 @@ def debug_failures(
         print(f"FIX: {advice}")
 
         for _, row in low.head(2).iterrows():
-            print(f"\n Question : {row.get('question', 'N/A')}")
+            question = _first_value(row, "question", "user_input") or "N/A"
+            answer = _first_value(row, "answer", "response")
+            print(f"\n Question : {question}")
             print(
                 f" Answer   : "
-                f"{str(row.get('answer', ''))[:120]}..."
+                f"{answer[:120]}..."
             )
             print(f" Score    : {row[col]:.3f}")
 

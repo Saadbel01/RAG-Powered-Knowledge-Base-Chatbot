@@ -1,7 +1,7 @@
 import json
+import math
 from pathlib import Path
 
-import math
 import structlog
 from datasets import Dataset
 from langchain_groq import ChatGroq
@@ -69,7 +69,6 @@ def run_evaluation(testset_path: str = "evaluation/testset.json") -> dict:
         model_name=settings.embed_model,
         model_kwargs={"device": "cpu"},
         encode_kwargs={"normalize_embeddings": True},
-        raise_exceptions=False
     )
 
     scores = evaluate(
