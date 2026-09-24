@@ -12,7 +12,7 @@ from rag_chatbot.ingestion.loader import load_documents
 log = structlog.get_logger(__name__)
 
 
-def generate_testset(n_samples: int = 25) -> list[dict]:
+def generate_testset(n_samples: int = 35) -> list[dict]:
 
     results: list[dict] = []
 
@@ -36,13 +36,21 @@ def generate_testset(n_samples: int = 25) -> list[dict]:
 
         try:
             json_format = '{"question": "...", "answer": "..."}'
-            prompt = f"""Read the following text and generate ONE clear
-                    question that can be
-                    answered ONLY from this text,
-                    plus the exact correct answer.
-                    Respond in JSON: {json_format}
+            prompt = f"""Read the following text and generate ONE clear "
+                conceptual question that can be answered ONLY from this text,
+                plus the exact correct answer.
 
-                    Text:
+                Rules for the question:
+                - Ask about concepts, methods, findings,
+                or explanations — not figures, tables, or citations
+                - The answer must be fully contained in the text,
+                not just implied
+                - Do not ask about figure numbers, arXiv IDs,
+                page numbers, or references
+
+                Respond in JSON: {json_format}
+
+                Text:
                     {sample.page_content}"""
             response = json.loads(model.invoke(prompt).content)
 

@@ -17,6 +17,7 @@ from ragas.metrics import (
 from rag_chatbot.config import get_settings
 from rag_chatbot.generation.chain import create_rag_chain
 from rag_chatbot.retrieval.retriever import HybridRetriever
+from ragas import RunConfig
 
 log = structlog.get_logger(__name__)
 
@@ -81,6 +82,8 @@ def run_evaluation(testset_path: str = "evaluation/testset.json") -> dict:
         ],
         llm=judge,
         embeddings=embedder,
+        raise_exceptions=False,
+        run_config=RunConfig(max_workers=1, timeout=120)
     )
 
     df = scores.to_pandas()
