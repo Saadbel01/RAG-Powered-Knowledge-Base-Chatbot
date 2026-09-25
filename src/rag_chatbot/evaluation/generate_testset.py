@@ -12,7 +12,7 @@ from rag_chatbot.ingestion.loader import load_documents
 log = structlog.get_logger(__name__)
 
 
-def generate_testset(n_samples: int = 35) -> list[dict]:
+def generate_testset(n_samples: int = 20) -> list[dict]:
 
     results: list[dict] = []
 
