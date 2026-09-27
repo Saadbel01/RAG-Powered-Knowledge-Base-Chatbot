@@ -8,6 +8,7 @@ from rag_chatbot.generation.chain import create_rag_chain, ask_with_retry
 from rag_chatbot.api.models import AskRequest, AskResponse
 from rag_chatbot.api.models import HealthResponse, MetricsResponse
 from rag_chatbot.api.middleware import rate_limiter
+from rag_chatbot.ingestion.embedder import fetch_all_chunks_from_pinecone
 import structlog
 
 structlog.configure(
@@ -24,25 +25,19 @@ _metrics: dict[str, int | float] = defaultdict(int)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """
-    Startup and shutdown logic.
-    Everything between the start of this function and the 'yield' statement
-    runs at startup, before any request is handled. Everything after 'yield'
-    runs at shutdown.
-    """
     log.info("startup.begin")
-    cfg = get_settings()
 
-    retriever = HybridRetriever()
+    # 1. Fetch all chunks from Pinecone
+    log.info("startup.corpus_load")
+    all_chunks = fetch_all_chunks_from_pinecone()
+
+    # 2. Pass all_chunks to enable BM25
+    retriever = HybridRetriever(all_chunks=all_chunks)
+
     app.state.retriever = retriever
-
     app.state.chain = create_rag_chain(retriever)
+    log.info("startup.done", chunks=len(all_chunks))
 
-    log.info(
-        "startup.done",
-        model=cfg.groq_model,
-        index=cfg.pinecone_index_name,
-    )
     yield
 
     log.info("shutdown.complete")
