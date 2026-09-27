@@ -35,21 +35,32 @@ def _upsert_batch(store: PineconeVectorStore,
 def embed_and_store(chunks: list[Document]) -> PineconeVectorStore:
     cfg = get_settings()
     batch_size = 64
-    log.info("embedder.start", total_chunk=len(chunks))
-    embeded_model = get_embedding_model()
-    first_batch = chunks[:64]
+    embeddings = get_embedding_model()
 
+    log.info("embedder.start", total_chunks=len(chunks), batch_size=batch_size)
+
+    for chunk in chunks:
+        chunk.metadata["text"] = chunk.page_content
+
+    # The first batch creates the Pinecone connection
+    first_batch = chunks[:batch_size]
     store = PineconeVectorStore.from_documents(
         documents=first_batch,
-        embedding=embeded_model,
+        embedding=embeddings,
         index_name=cfg.pinecone_index_name,
-        pinecone_api_key=cfg.pinecone_api_key)
-    for i in tqdm(range(64, len(chunks), batch_size),
-                  total=(len(chunks) - 64 + batch_size - 1) // batch_size,
-                  desc="Embedding batches"):
-        chunk_batch = chunks[i: i + batch_size]
-        _upsert_batch(store, chunk_batch)
+    )
+
+    remaining = chunks[batch_size:]
+    total_batches = (len(remaining) + batch_size - 1) // batch_size
+
+    for i in tqdm(
+        range(0, len(remaining), batch_size),
+        total=total_batches,
+        desc="Embedding batches",
+    ):
+        _upsert_batch(store, remaining[i: i + batch_size])
         time.sleep(0.2)
+
     log.info("embedder.done", stored=len(chunks))
     return store
 
