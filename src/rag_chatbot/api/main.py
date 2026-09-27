@@ -2,7 +2,6 @@ import uuid
 from contextlib import asynccontextmanager
 from collections import defaultdict
 from fastapi import FastAPI, HTTPException, Request
-from rag_chatbot.config import get_settings
 from rag_chatbot.retrieval.retriever import HybridRetriever
 from rag_chatbot.generation.chain import create_rag_chain, ask_with_retry
 from rag_chatbot.api.models import AskRequest, AskResponse
