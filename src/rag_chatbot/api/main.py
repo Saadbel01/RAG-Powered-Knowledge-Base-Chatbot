@@ -6,9 +6,11 @@ from rag_chatbot.retrieval.retriever import HybridRetriever
 from rag_chatbot.generation.chain import create_rag_chain, ask_with_retry
 from rag_chatbot.api.models import AskRequest, AskResponse
 from rag_chatbot.api.models import HealthResponse, MetricsResponse
-from rag_chatbot.api.middleware import rate_limiter
 from rag_chatbot.ingestion.embedder import fetch_all_chunks_from_pinecone
+from rag_chatbot.api.cache import ResponseCache
+from rag_chatbot.api.middleware import check_rate_limit
 import structlog
+
 
 structlog.configure(
     processors=[
@@ -20,6 +22,7 @@ structlog.configure(
 log = structlog.get_logger(__name__)
 
 _metrics: dict[str, int | float] = defaultdict(int)
+_cache = ResponseCache(ttl_seconds=86400)
 
 
 @asynccontextmanager
@@ -62,12 +65,31 @@ def health(request: Request) -> HealthResponse:
 @app.post("/ask", response_model=AskResponse, tags=["rag"])
 def ask(ask_request: AskRequest, request: Request) -> AskResponse:
     request_id = str(uuid.uuid4())
-    rate_limiter.check(ask_request.user_id)
+    log.info("ask.received", request_id=request_id,
+             user=ask_request.user_id,
+             question_preview=ask_request.question[:60])
+
+    # Step 1: Redis rate limit (raises 429 if over limit)
+    check_rate_limit(ask_request.user_id)
+
+    # Step 2+3: Cache lookup (exact then semantic)
+    cached = _cache.get(ask_request.question)
+
+    if cached:
+        _metrics["cache_hits"] += 1
+        _metrics["total_requests"] += 1
+        log.info("ask.cache_hit", request_id=request_id)
+        return AskResponse(answer=cached, latency_ms=0, request_id=request_id)
+
+    # Step 4: Full RAG pipeline
     try:
         response = ask_with_retry(request.app.state.chain,
                                   ask_request.question)
     except Exception:
-        raise HTTPException(status_code=503)
+        raise HTTPException(status_code=503,
+                            detail="LLM temporarily unavailable.")
+
+    _cache.set(ask_request.question, response["answer"])
 
     _metrics["total_requests"] += 1
     _metrics["groq_calls"] += 1
